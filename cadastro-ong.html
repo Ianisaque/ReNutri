@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro de ONG - ReNutri</title>
+</head>
+<body class="page-cadastro">
+
+    <!-- MENU DE NAVEGAÇÃO -->
+    <header>
+        <nav>
+            <a href="index.html">
+                <img src="img/logo.png" class="logo" alt="logo-startup">
+            </a>
+            <div class="nav-links">
+                <a href="como-funciona.html">Como Funciona</a>
+                <a href="empresas.html">Para Empresas</a>
+                <a href="ongs.html">Para ONGs</a>
+                <a href="produtos.html">Produtos</a>
+                <a href="sobre.html">Sobre Nós</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+        <div class="section-title">
+            <h2>Cadastre sua ONG</h2>
+            <p>Preencha os dados abaixo para fazer parte da nossa rede de parceiros.</p>
+        </div>
+
+        <!-- FORMULÁRIO (Reaproveitando classes de cadastro) -->
+        <div class="form-container">
+            <form id="ong-form" novalidate>
+                
+                <div class="form-group">
+                    <label for="nome-ong">Nome da ONG *</label>
+                    <input type="text" id="nome-ong" name="nome-ong" placeholder="Ex: Instituto Esperança" required>
+                    <span class="error-msg" id="error-nome-ong"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cnpj">CNPJ *</label>
+                    <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" required>
+                    <span class="error-msg" id="error-cnpj"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email-ong">E-mail Institucional *</label>
+                    <input type="email" id="email-ong" name="email-ong" placeholder="contato@ong.org" required>
+                    <span class="error-msg" id="error-email-ong"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone-ong">Telefone / WhatsApp *</label>
+                    <input type="tel" id="telefone-ong" name="telefone-ong" placeholder="(11) 99999-9999" required>
+                    <span class="error-msg" id="error-telefone-ong"></span>
+                </div>
+
+                <button type="submit" class="btn-primary btn-submit" id="btn-submit-ong">
+                    Enviar Cadastro
+                </button>
+                
+                <div id="form-success-ong" class="form-success" style="display: none;">
+                    <p>Cadastro enviado com sucesso! Nossa equipe entrará em contato para validar os dados.</p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ReNutri. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script-ong.js"></script>
+</body>
+</html>

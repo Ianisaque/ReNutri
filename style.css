@@ -1,0 +1,1453 @@
+/* ============================================================
+   RENUTRI — style.css
+   ============================================================ */
+
+/* ============================================================
+   1. RESET E VARIÁVEIS GLOBAIS
+   ============================================================ */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Paleta principal — verdes remetem a sustentabilidade/alimentos */
+    --verde-principal: #2d6a4f;
+    --verde-escuro: #1b4332;
+    --verde-claro: #52b788;
+    --verde-suave: #d8f3dc;
+    --verde-suave-alt: #e9f5ec;
+    --amarelo-destaque: #ffa962;
+
+    /* Texto */
+    --texto-escuro: #1a1a1a;
+    --texto-medio: #4a4a4a;
+    --branco: #faf0d9;
+    --cinza-claro: #f8f9fa;
+
+    /* Tipografia */
+    --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Efeitos */
+    --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --sombra-media: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --borda-arredondada: 12px;
+    --transicao: all 0.3s ease;
+}
+
+body {
+    font-family: var(--fonte-principal);
+    color: var(--texto-escuro);
+    line-height: 1.6;
+    background-color: var(--branco);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+main {
+    max-width: 100%; /* Ocupa toda a largura */
+    margin: 0 auto;
+    padding: 2rem 5%; /* Aumenta o padding lateral para o texto não colar nas bordas */
+}
+
+/* ============================================================
+   2. HEADER / NAVEGAÇÃO (compartilhado)
+   ============================================================ */
+header {
+    background-color: #ffffff; /* Branco puro */
+    box-shadow: var(--sombra-suave);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    background-color: #ffffff;
+    max-width: 100%; /* Ocupa toda a largura */
+    margin: 0 auto;
+    padding: 1rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+    transition: var(--transicao);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--texto-medio);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.3rem;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: var(--transicao);
+}
+
+/* Linha animada no hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--verde-principal);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--verde-principal);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ============================================================
+   3. BANNER (base compartilhada pelas duas páginas)
+   ============================================================ */
+.banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 3rem 0;
+    min-height: 70vh;
+}
+
+.banner-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--borda-arredondada);
+    box-shadow: var(--sombra-media);
+}
+
+.banner-text h1 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    color: var(--verde-escuro);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+
+.banner-text p {
+    font-size: 1.25rem; /* Aumentado para dar mais destaque */
+    color: var(--texto-medio);
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* ============================================================
+   4. CARD (base compartilhada)
+   ============================================================ */
+.card {
+    border-radius: var(--borda-arredondada);
+    padding: 2rem;
+    box-shadow: var(--sombra-suave);
+    border-top: 4px solid var(--verde-principal);
+    transition: var(--transicao);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--sombra-media);
+    border-top-color: var(--amarelo-destaque);
+}
+
+.card h3 {
+    color: var(--verde-escuro);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.card p {
+    color: var(--texto-medio);
+    font-size: 1.1rem; /* Aumentado */
+    line-height: 1.7;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ============================================================
+   5. FOOTER (compartilhado)
+   ============================================================ */
+footer {
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+}
+
+footer p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* ============================================================
+   6. ESCOPO: PÁGINA HOME (index.html)
+   ============================================================ */
+
+/* Grid dos 3 cards de público */
+.page-home .card-home {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 4rem 0;
+}
+
+/* Imagem dentro dos cards da home */
+.page-home .card img {
+    width: 100%;
+    height: 180px; /* Altura fixa para padronizar todos */
+    object-fit: contain; /* Mostra o ícone inteiro, sem cortar as bordas */
+    padding: 1rem; /* Dá um espaço interno para o ícone respirar */
+    background-color: transparent; /* Remove o fundo verde, já que o ícone tem fundo */
+    margin-bottom: 0.5rem; /* Espaço entre a imagem e o título */
+}
+
+/* Seção B2B2C (imagem + texto) */
+.page-home .img-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 3rem;
+    margin: 2rem 0;
+    background-color: var(--verde-suave);
+    border-radius: var(--borda-arredondada);
+}
+
+.page-home .img-info .info h2 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--verde-escuro);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.page-home .img-info .info p {
+    color: var(--texto-medio);
+    font-size: 1.15rem; /* Aumentado */
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* ============================================================
+   7. ESCOPO: PÁGINA COMO FUNCIONA (como-funciona.html)
+   ============================================================ */
+
+/* Banner dessa página: texto primeiro, centralizado verticalmente */
+.page-como-funciona .banner .banner-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Grid dos 4 passos */
+.page-como-funciona .card-home--steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 4rem 0;
+}
+
+/* Cards dos passos */
+.page-como-funciona .card-home--steps .card {
+    text-align: left;
+    min-height: 260px;
+    justify-content: flex-start;
+}
+
+/* Emoji circular dos passos */
+.page-como-funciona .step-number {
+    width: 150px;
+    height: 150px;
+    font-size: 2rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.page-como-funciona .card:hover .step-number {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+/* Título de seção ("O Destino das Caixas") */
+.page-como-funciona .section-title {
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+.page-como-funciona .section-title h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: var(--verde-escuro);
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+}
+
+.page-como-funciona .section-title p {
+    font-size: 1.15rem; /* Aumentado */
+    color: var(--texto-medio);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Linha decorativa abaixo do título */
+.page-como-funciona .section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--amarelo-destaque);
+    border-radius: 2px;
+    margin: 1.5rem auto 0;
+}
+
+/* Seções "PRA VOCÊ" e "PARA AS ONGs" */
+.page-como-funciona .img-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--verde-suave);
+    border-radius: var(--borda-arredondada);
+}
+
+/* Variação do segundo bloco (ONGs) */
+.page-como-funciona .img-info--reverse {
+    background-color: var(--verde-suave-alt);
+}
+
+.page-como-funciona .img-info .info h2 {
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    color: var(--verde-escuro);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.page-como-funciona .img-info .info p {
+    color: var(--texto-medio);
+    font-size: 1.15rem; /* Aumentado */
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* ============================================================
+   8. RESPONSIVIDADE
+   ============================================================ */
+
+/* --- TABLET (até 1024px) --- */
+@media (max-width: 1024px) {
+    /* Na "Como Funciona", os 4 cards viram 2 colunas */
+    .page-como-funciona .card-home--steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* --- MOBILE (até 768px) --- */
+@media (max-width: 768px) {
+    /* Header empilha */
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    /* Banner vira coluna única — texto primeiro, imagem depois */
+    .banner {
+        grid-template-columns: 1fr;
+        padding: 2rem 0;
+        min-height: auto;
+        gap: 2rem;
+    }
+
+    .banner .banner-img {
+        order: 2;
+    }
+
+    .banner .banner-text {
+        order: 1;
+    }
+
+    .banner-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .banner-text p {
+        font-size: 1.1rem; /* Ajuste mobile */
+        text-align: left;
+    }
+
+    /* Ajuste geral de textos para mobile */
+    .card p,
+    .page-home .img-info .info p,
+    .page-como-funciona .img-info .info p,
+    .page-empresas .img-info .info p,
+    .page-sobre .img-info .info p {
+        font-size: 1rem; /* Volta para o tamanho normal no celular */
+    }
+
+    /* ---------- HOME ---------- */
+    .page-home .card-home {
+        grid-template-columns: 1fr;
+        padding: 2rem 0;
+        gap: 1.5rem;
+    }
+
+    .page-home .img-info {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+    }
+
+    /* ---------- COMO FUNCIONA ---------- */
+    .page-como-funciona .card-home--steps {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .page-como-funciona .card-home--steps .card {
+        text-align: center;
+        align-items: center;
+        min-height: auto;
+    }
+
+    .page-como-funciona .step-number {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .page-como-funciona .section-title {
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .page-como-funciona .section-title h2 {
+        font-size: 1.6rem;
+    }
+
+    .page-como-funciona .section-title p {
+        font-size: 1rem;
+    }
+
+    .page-como-funciona .img-info {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+    }
+
+    .page-como-funciona .img-info .info p {
+        text-align: left;
+    }
+
+    main {
+        padding: 1rem;
+    }
+}
+
+/* --- MOBILE PEQUENO (até 480px) --- */
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 0.8rem;
+    }
+
+    .nav-links a {
+        font-size: 1.3rem;
+        padding: 0.3rem 0;
+    }
+
+    .banner-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .page-como-funciona .step-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+}
+
+/* ============================================================
+   9. ACESSIBILIDADE
+   ============================================================ */
+
+/* Foco visível para navegação por teclado */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--amarelo-destaque);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Respeita preferência por menos animações */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================================
+   10. ESCOPO: PÁGINA PARA EMPRESAS (empresas.html)
+   ============================================================ */
+
+/* --- Banner dessa página: texto primeiro, alinhado ao centro --- */
+.page-empresas .banner .banner-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Container dos CTAs abaixo do parágrafo */
+.page-empresas .banner-ctas {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* --- BOTÃO PRIMÁRIO (CTA principal) --- */
+.page-empresas .btn-primary {
+    display: inline-block;
+    background-color: var(--amarelo-destaque);
+    color: var(--verde-escuro);
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: var(--sombra-suave);
+    transition: var(--transicao);
+    border: 2px solid transparent;
+}
+
+.page-empresas .btn-primary:hover {
+    background-color: var(--verde-principal);
+    color: var(--branco);
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-media);
+}
+
+.page-empresas .btn-primary:active {
+    transform: translateY(-1px);
+}
+
+/* --- Título de seção (reaproveita o mesmo visual do como-funciona) --- */
+.page-empresas .section-title {
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 2.5rem;
+    padding: 0 1rem;
+}
+
+.page-empresas .section-title h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: var(--verde-escuro);
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+}
+
+.page-empresas .section-title p {
+    font-size: 1.15rem; /* Aumentado */
+    color: var(--texto-medio);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.page-empresas .section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--amarelo-destaque);
+    border-radius: 2px;
+    margin: 1.5rem auto 0;
+}
+
+/* --- Grid de 3 cards com emojis --- */
+.page-empresas .card-home--steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 2rem 0 4rem;
+}
+
+.page-empresas .card-home--steps .card {
+    text-align: left;
+    min-height: 260px;
+    justify-content: flex-start;
+}
+
+/* --- Emoji circular (mesmo padrão do como-funciona) --- */
+.page-empresas .step-number {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.page-empresas .card:hover .step-number {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+/* --- Bloco "Passo a passo operacional" (imagem + texto) --- */
+.page-empresas .img-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--verde-suave);
+    border-radius: var(--borda-arredondada);
+}
+
+
+.page-empresas .img-info .info h2 {
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    color: var(--verde-escuro);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.page-empresas .img-info .info p {
+    color: var(--texto-medio);
+    font-size: 1.15rem; /* Aumentado */
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* --- Lista numerada dos 3 passos operacionais --- */
+.page-empresas .steps-list {
+    list-style: none;
+    counter-reset: passo;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.page-empresas .steps-list li {
+    counter-increment: passo;
+    position: relative;
+    padding-left: 3rem;
+    color: var(--texto-medio);
+    font-size: 1.15rem; /* Aumentado */
+    line-height: 1.7;
+}
+
+/* Círculo numerado antes de cada passo */
+.page-empresas .steps-list li::before {
+    content: counter(passo);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--verde-principal);
+    color: var(--branco);
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.page-empresas .steps-list li strong {
+    color: var(--verde-escuro);
+}
+
+/* --- Responsividade da página Para Empresas --- */
+@media (max-width: 1024px) {
+    .page-empresas .card-home--steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .page-empresas .card-home--steps {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        padding: 1.5rem 0 2.5rem;
+    }
+
+    .page-empresas .card-home--steps .card {
+        text-align: center;
+        align-items: center;
+        min-height: auto;
+    }
+
+    .page-empresas .step-number {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .page-empresas .section-title {
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .page-empresas .section-title h2 {
+        font-size: 1.6rem;
+    }
+
+    .page-empresas .section-title p {
+        font-size: 1rem;
+    }
+
+    .page-empresas .img-info {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+    }
+
+    .page-empresas .img-info .info p {
+        text-align: left;
+    }
+
+    .page-empresas .banner-ctas {
+        justify-content: center;
+    }
+
+    .page-empresas .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .page-empresas .steps-list li {
+        padding-left: 2.8rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-empresas .step-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+
+    .page-empresas .steps-list li::before {
+        width: 1.8rem;
+        height: 1.8rem;
+        font-size: 0.85rem;
+    }
+
+    .page-empresas .steps-list li {
+        padding-left: 2.5rem;
+    }
+}
+
+/* ============================================================
+   11. ESCOPO: PÁGINA SOBRE NÓS (sobre.html)
+   ============================================================ */
+
+/* --- Banner: texto primeiro, centralizado verticalmente --- */
+.page-sobre .banner .banner-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* --- Bloco "O problema que nos moveu" --- */
+.page-sobre .img-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 3rem 2rem;
+    margin: 3rem 0 0;
+    background-color: var(--verde-suave);
+    border-radius: var(--borda-arredondada);
+}
+
+/* Variação de fundo para diferenciar de outras páginas */
+.page-sobre .img-info--sobre {
+    background-color: var(--verde-suave-alt);
+}
+
+.page-sobre .img-info .info h2 {
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    color: var(--verde-escuro);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.page-sobre .img-info .info p {
+    color: var(--texto-medio);
+    font-size: 1.15rem; /* Aumentado */
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 1rem;
+}
+
+/* Remove a margem do último parágrafo */
+.page-sobre .img-info .info p:last-child {
+    margin-bottom: 0;
+}
+
+/* --- Título de seção ("Nossos Valores") --- */
+.page-sobre .section-title {
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 2.5rem;
+    padding: 0 1rem;
+}
+
+.page-sobre .section-title h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: var(--verde-escuro);
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+}
+
+.page-sobre .section-title p {
+    font-size: 1.15rem; /* Aumentado */
+    color: var(--texto-medio);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.page-sobre .section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--amarelo-destaque);
+    border-radius: 2px;
+    margin: 1.5rem auto 0;
+}
+
+/* --- Grid de 3 cards de valores --- */
+.page-sobre .card-home--steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 2rem 0 4rem;
+}
+
+.page-sobre .card-home--steps .card {
+    text-align: left;
+    min-height: 260px;
+    justify-content: flex-start;
+}
+
+/* --- Emoji circular dos valores --- */
+.page-sobre .step-number {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.page-sobre .card:hover .step-number {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+/* --- Responsividade da página Sobre Nós --- */
+@media (max-width: 1024px) {
+    .page-sobre .card-home--steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .page-sobre .card-home--steps {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        padding: 1.5rem 0 2.5rem;
+    }
+
+    .page-sobre .card-home--steps .card {
+        text-align: center;
+        align-items: center;
+        min-height: auto;
+    }
+
+    .page-sobre .step-number {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .page-sobre .section-title {
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .page-sobre .section-title h2 {
+        font-size: 1.6rem;
+    }
+
+    .page-sobre .section-title p {
+        font-size: 1rem;
+    }
+
+    .page-sobre .img-info {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .page-sobre .img-info .info p {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-sobre .step-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+}
+
+/* ============================================================
+   12. ESCOPO: PÁGINA PRODUTOS (produtos.html)
+   ============================================================ */
+
+/* --- Ajustes no Banner para a página de Produtos --- */
+.page-produtos .banner {
+    min-height: 50vh; /* Banner um pouco mais curto */
+    padding: 2rem 0;
+}
+
+/* --- Título de Seção (reaproveitando o padrão) --- */
+.page-produtos .section-title {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+.page-produtos .section-title h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: var(--verde-escuro);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.page-produtos .section-title p {
+    font-size: 1.15rem; /* Aumentado */
+    color: var(--texto-medio);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Linha decorativa */
+.page-produtos .section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--amarelo-destaque);
+    border-radius: 2px;
+    margin: 1.5rem auto 0;
+}
+
+/* --- Grid de Cards dos Produtos --- */
+.page-produtos .card-home {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 0 0 3rem 0;
+}
+
+/* Imagens dos cards de produto */
+.page-produtos .card-home .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: var(--verde-suave);
+    margin-bottom: 1rem;
+}
+
+/* --- Estilização de Preços --- */
+.page-produtos .card-price {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.page-produtos .price {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--verde-escuro);
+}
+
+.page-produtos .value-min {
+    font-size: 0.95rem; /* Aumentado levemente */
+    color: var(--texto-medio);
+    font-weight: 600;
+}
+
+/* --- Destaque do Card (Mais Escolhida) --- */
+.page-produtos .card-highlight {
+    position: relative;
+    border: 2px solid var(--amarelo-destaque);
+    box-shadow: var(--sombra-media);
+    transform: scale(1.02); /* Levemente maior */
+}
+
+.page-produtos .card-highlight:hover {
+    transform: scale(1.02) translateY(-8px); /* Mantém o scale no hover */
+}
+
+.page-produtos .badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--amarelo-destaque);
+    color: var(--verde-escuro);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* --- Passos "Como Retirar" (Reutilizando base) --- */
+.page-produtos .card-home--steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 0 0 3rem 0;
+}
+
+.page-produtos .step-number {
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.page-produtos .card:hover .step-number {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+/* --- Aviso Importante --- */
+.page-produtos .aviso-box {
+    background-color: #fff3cd; /* Amarelo bem claro para alerta */
+    border-left: 6px solid var(--amarelo-destaque);
+    padding: 2rem;
+    border-radius: var(--borda-arredondada);
+    margin-bottom: 3rem;
+}
+
+.page-produtos .aviso-box h3 {
+    color: #856404; /* Tom de amarelo escuro/marrom para alerta */
+    margin-bottom: 1rem;
+    font-size: 1.4rem; /* Aumentado */
+}
+
+.page-produtos .aviso-box ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    color: var(--texto-medio);
+}
+
+.page-produtos .aviso-box li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    font-size: 1.15rem; /* Aumentado */
+}
+
+/* --- CTA Final --- */
+.page-produtos .cta-final {
+    text-align: center;
+    background-color: var(--verde-suave);
+    padding: 3rem 2rem;
+    border-radius: var(--borda-arredondada);
+    margin-bottom: 2rem;
+}
+
+/* Fim da regra do título do CTA */
+.page-produtos .cta-final h2 {
+    color: var(--verde-escuro);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+} /* <-- Essa chave fecha o h2 */
+
+/* Início da regra do parágrafo do CTA */
+.page-produtos .cta-final p {
+    color: var(--texto-medio);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.15rem; /* Aumentado */
+} /* <-- Essa chave fecha o p */
+
+/* Botão Primário (Reaproveitando a lógica do btn-primary de empresas) */
+.page-produtos .btn-primary {
+    display: inline-block;
+    background-color: var(--amarelo-destaque);
+    color: var(--verde-escuro);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    box-shadow: var(--sombra-suave);
+    transition: var(--transicao);
+    border: 2px solid transparent;
+}
+
+.page-produtos .btn-primary:hover {
+    background-color: var(--verde-principal);
+    color: var(--branco);
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-media);
+}
+
+/* --- Responsividade para Produtos --- */
+@media (max-width: 1024px) {
+    .page-produtos .card-home--steps {
+        grid-template-columns: repeat(3, 1fr); /* Mantém 3 colunas no tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .page-produtos .card-home {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .page-produtos .card-highlight {
+        transform: scale(1); /* Remove o scale no mobile para não quebrar o layout */
+    }
+
+    .page-produtos .card-highlight:hover {
+        transform: translateY(-8px);
+    }
+
+    .page-produtos .card-home--steps {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .page-produtos .cta-final {
+        padding: 2rem 1rem;
+    }
+    
+    .page-produtos .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .page-produtos .aviso-box li {
+        font-size: 1rem; /* Ajuste mobile */
+    }
+}
+
+/* ============================================================
+   13. ESCOPO: PÁGINA DE CADASTRO (cadastro.html)
+   ============================================================ */
+
+.page-cadastro .form-container {
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: var(--borda-arredondada);
+    box-shadow: var(--sombra-media);
+    border-top: 4px solid var(--verde-principal);
+}
+
+.page-cadastro .form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-cadastro .form-group label {
+    font-weight: 600;
+    color: var(--verde-escuro);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.page-cadastro .form-group input,
+.page-cadastro .form-group select {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: var(--fonte-principal);
+    font-size: 1rem;
+    color: var(--texto-escuro);
+    background-color: var(--cinza-claro);
+    transition: var(--transicao);
+}
+
+.page-cadastro .form-group input:focus,
+.page-cadastro .form-group select:focus {
+    outline: none;
+    border-color: var(--verde-principal);
+    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
+    background-color: #ffffff;
+}
+
+/* Mensagens de erro */
+.page-cadastro .error-msg {
+    color: #d9534f;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    font-weight: 600;
+    min-height: 1.2rem;
+    display: block;
+}
+
+.page-cadastro .form-group.error input,
+.page-cadastro .form-group.error select {
+    border-color: #d9534f;
+    background-color: #fdf2f2;
+}
+
+/* --- Botão de Envio do Cadastro --- */
+.page-cadastro .btn-submit {
+    width: 100%;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-family: var(--fonte-principal);
+    font-size: 1.1rem;
+    
+    /* Cores do botão primário do seu site */
+    background-color: var(--amarelo-destaque);
+    color: var(--verde-escuro);
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    box-shadow: var(--sombra-suave);
+    transition: var(--transicao);
+}
+
+/* Efeito ao passar o mouse */
+.page-cadastro .btn-submit:hover {
+    background-color: var(--verde-principal);
+    color: var(--branco);
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-media);
+}
+
+/* Quando estiver enviando (desabilitado) */
+.page-cadastro .btn-submit:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Mensagem de sucesso */
+.page-cadastro .form-success {
+    background-color: var(--verde-suave);
+    color: var(--verde-escuro);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    border-left: 4px solid var(--verde-principal);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .page-cadastro .form-container {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* ============================================================
+   14. ESCOPO: PÁGINA PARA ONGs (ongs.html)
+   ============================================================ */
+   .page-ongs .banner {
+    min-height: 60vh;
+    padding: 3rem 0;
+}
+
+/* CTA Final (Reaproveitando o estilo de Produtos) */
+.page-ongs .cta-final {
+    text-align: center;
+    background-color: var(--verde-suave);
+    padding: 3rem 2rem;
+    border-radius: var(--borda-arredondada);
+    margin: 4rem 0 2rem;
+}
+
+.page-ongs .cta-final h2 {
+    color: var(--verde-escuro);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+}
+
+.page-ongs .cta-final p {
+    color: var(--texto-medio);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.15rem;
+}
+
+/* Reaproveitando a classe btn-primary para a página de ONGs */
+.page-ongs .btn-primary {
+    display: inline-block;
+    background-color: var(--amarelo-destaque);
+    color: var(--verde-escuro);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    box-shadow: var(--sombra-suave);
+    transition: var(--transicao);
+    border: 2px solid transparent;
+}
+
+.page-ongs .btn-primary:hover {
+    background-color: var(--verde-principal);
+    color: var(--branco);
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-media);
+}
+
+/* --- LAYOUT DOS CARDS (Ícone à esquerda) --- */
+.page-ongs .card-home--steps .card {
+    flex-direction: row; /* Coloca lado a lado */
+    align-items: flex-start; /* Alinha ao topo */
+    text-align: left;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+/* Container do Ícone */
+.page-ongs .step-number {
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0; /* Impede que o ícone seja esmagado */
+    margin: 0; /* Remove a centralização antiga */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Imagem do Ícone */
+.page-ongs .step-number img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Container do Conteúdo (Título e Texto) */
+.page-ongs .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1; /* Ocupa todo o espaço restante do card */
+}
+
+/* Responsividade para ONGs */
+@media (max-width: 768px) {
+    .page-ongs .cta-final {
+        padding: 2rem 1rem;
+        margin-top: 3rem;
+    }
+
+    .page-ongs .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* No celular, volta a empilhar (ícone em cima, texto embaixo) */
+    .page-ongs .card-home--steps .card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .page-ongs .step-number {
+        margin-bottom: 1rem;
+    }
+}
